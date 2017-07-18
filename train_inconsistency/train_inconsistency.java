@@ -15,7 +15,7 @@ public class first_question {
 		
 		try{
 			
-			sc = new Scanner(System.in);
+			sc = new Scanner(new File("sample.in"));
 			
 		}catch(Exception e){
 			
