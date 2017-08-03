@@ -50,13 +50,182 @@ public class magic__suqare {
 	}
 		
 		x.close();
+		Vector<Long>  sum_vector = new Vector<Long>();
+		sum_vector = rowwise(v);
+		
+		
 		show(v);
+		System.out.printf("\nsum is \n");
+		show_vector(sum_vector);
+		
+		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
+		temp = get_column(v);
+		System.out.printf("\ncolumns are \n");
+		
+		show(temp);
+		Vector<Vector<Long>> diag = new Vector<Vector<Long>>();
+		diag = get_diagonal(v);
+		System.out.printf("\ndiagonals are are \n");
+		show(diag);
+		
+		
+	}
+	
+	/*
+	 * 
+	 * Takes the sum of the whole vector 
+	 * 
+	 * @param: vector of number's of the row, column or diagonal elements in the box
+	 * @return: Long integer sum of the elements in the vectors 
+	 * 
+	 * 
+	 * 
+	 * */
+	
+	
+	private static long sum(Vector<Long> v){
+		
+		long sum = 0;
+		
+		for(int i = 0; i < v.size(); i++){
+			
+			sum = sum + v.get(i);
+			
+			
+			
+		}
+		
+		return sum;
+		
+	}
+	
+	
+	private static Vector<Long> rowwise(Vector<Vector<Long>>v){
+		
+		long g = 0;
+		Vector<Long>  sum_vector = new Vector<Long>();
+		
+		for(int i = 0; i < v.size();i++){
+			Vector<Long>  temp = new Vector<Long>();
+			temp = v.get(i);
+			sum_vector.add(sum(temp));	
+			
+		}
+		
+		
+		
+		
+		return sum_vector;
 	}
 	
 	
 	
+	private static Vector<Vector<Long>> get_column(Vector<Vector<Long>> v){
+		
+		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
+		
+		
+		for(int j = 0; j < v.size(); j++){
+			Vector<Long> Add_vector = new Vector<Long>();
+		for(int i = 0; i < v.size(); i++){
+			Vector<Long> inter = new Vector<Long>();
+			inter = v.get(i);
+			Add_vector.add(inter.get(j));
+			
+		}
+		temp.add(Add_vector);
+		}
+		
+		
+		
+		return temp;
+		
+		
+	}
+	
+	private static Vector<Vector<Long>> get_diagonal(Vector<Vector<Long>> v){
+		
+		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
+		
+		for(int i = 0; i < 2; i++){
+			Vector<Long> Add_vector = new Vector<Long>();
+			
+			for(int j = 0; j < v.size(); j++){
+				Vector<Long> inter = new Vector<Long>();
+				inter = v.get(i);
+				
+				if(i == 0){
+					
+					
+					if(j == 0){
+						
+						Add_vector.add(inter.get(j));
+					}else{
+						
+						Add_vector.add(inter.get(j+1));
+					}
+					
+					
+					
+					
+					
+					
+				}else{
+					
+					
+					if(j == v.size() - 1){
+						
+						Add_vector.add(inter.get(0));
+						
+					}else{
+						
+						Add_vector.add(inter.get(v.size() - 1 - j));
+					}
+					
+					
+				}
+				
+				
+				
+			}
+			
+			temp.add(Add_vector);
+			
+		}
+		
+		
+		
+		
+		return temp;
+		
+	}
 	
 	
+	private static void show_vector(Vector<Long> v){
+		
+		
+		for(int j = 0; j < v.size();j++){
+			
+			System.out.printf("%d ",v.get(j));
+
+
+
+
+	}
+		
+		
+	}
+	
+	/*
+	 * 
+	 * prints out all the elements in the box
+	 * 
+	 * @param: vector of vector's containing the box elements
+	 * @return: void
+	 * 
+	 * 
+	 * 
+	 * */
 	
 	
 		private static void show(Vector<Vector<Long>>v){
