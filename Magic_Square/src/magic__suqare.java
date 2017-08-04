@@ -14,7 +14,7 @@ public class magic__suqare {
 		
 		try{
 			
-			x = new Scanner(new File("values.txt"));
+			x = new Scanner(new File("sample_1.txt"));
 			
 		}catch(Exception e){
 			
@@ -30,7 +30,7 @@ public class magic__suqare {
 			if (i == 0){
 				
 				size = x.nextLong();
-				System.out.printf("size is %d\n",size);
+				System.out.printf("The square size is %d * %d\n\n",size,size);
 				i++;
 				
 			}else{
@@ -50,25 +50,66 @@ public class magic__suqare {
 	}
 		
 		x.close();
-		Vector<Long>  sum_vector = new Vector<Long>();
-		sum_vector = rowwise(v);
 		
 		
+		
+		
+		Vector<Vector<Long>> col_values = new Vector<Vector<Long>>();
+		col_values = get_column(v);
+		
+		Vector<Vector<Long>> diag_values = new Vector<Vector<Long>>();
+		diag_values = get_diagonal(v);
+		
+		
+		Vector<Long>  sum_row = new Vector<Long>();
+		Vector<Long>  sum_col = new Vector<Long>();
+		Vector<Long>  sum_diag = new Vector<Long>();
+		
+		
+		sum_row = rowwise(v);
+		sum_col = rowwise(col_values);
+		sum_diag = rowwise(diag_values);
 		show(v);
-		/*System.out.printf("\nsum is \n");
-		show_vector(sum_vector);
-		
-		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
-		temp = get_column(v);
-		System.out.printf("\ncolumns are \n");
-		
-		show(temp);*/
-		Vector<Vector<Long>> diag = new Vector<Vector<Long>>();
-		diag = get_diagonal(v);
-		System.out.printf("\ndiagonals are are \n");
-		show(diag);
 		
 		
+		if(equal_sum(sum_row) && equal_sum(sum_col) && equal_sum(sum_diag)  ){
+			
+			System.out.printf("\nThis is a Magic Square \n");
+			
+		}else{
+			
+			System.out.printf("\nThis is not a Magic Square \n");
+		}
+		
+		
+		
+	}
+	
+	private static boolean equal_sum(Vector<Long>v){
+		
+		boolean flag = true;
+		
+		for(int i = 0; i < v.size();i++){
+			
+			
+			
+			
+			for(int j = i +1 ;j < v.size();j++){
+				
+				if(v.get(i) != v.get(j)){
+					
+					flag = false;
+					break;
+					
+				}
+				
+			}
+		}
+		
+		
+		
+		
+		return flag;
 	}
 	
 	/*
