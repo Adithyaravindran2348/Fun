@@ -55,14 +55,14 @@ public class magic__suqare {
 		
 		
 		show(v);
-		System.out.printf("\nsum is \n");
+		/*System.out.printf("\nsum is \n");
 		show_vector(sum_vector);
 		
 		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
 		temp = get_column(v);
 		System.out.printf("\ncolumns are \n");
 		
-		show(temp);
+		show(temp);*/
 		Vector<Vector<Long>> diag = new Vector<Vector<Long>>();
 		diag = get_diagonal(v);
 		System.out.printf("\ndiagonals are are \n");
@@ -143,31 +143,25 @@ public class magic__suqare {
 		
 	}
 	
+	
+	
 	private static Vector<Vector<Long>> get_diagonal(Vector<Vector<Long>> v){
 		
 		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
 		
-		for(int i = 0; i < 2; i++){
+		for(int i = 0; i < v.size() ; i = i + v.size() -1 ){
+			
+			
 			Vector<Long> Add_vector = new Vector<Long>();
 			
 			for(int j = 0; j < v.size(); j++){
+				
 				Vector<Long> inter = new Vector<Long>();
-				inter = v.get(i);
+				inter = v.get(j);
 				
 				if(i == 0){
 					
-					
-					if(j == 0){
-						
-						Add_vector.add(inter.get(j));
-					}else{
-						
-						Add_vector.add(inter.get(j+1));
-					}
-					
-					
-					
-					
+					Add_vector.add(inter.get(j));
 					
 					
 				}else{
@@ -176,6 +170,11 @@ public class magic__suqare {
 					if(j == v.size() - 1){
 						
 						Add_vector.add(inter.get(0));
+						
+					}else if(j == 0){
+						
+						Add_vector.add(inter.get(v.size() - 1));
+						
 						
 					}else{
 						
@@ -190,6 +189,7 @@ public class magic__suqare {
 			}
 			
 			temp.add(Add_vector);
+			
 			
 		}
 		
