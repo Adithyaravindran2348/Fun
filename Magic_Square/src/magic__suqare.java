@@ -53,25 +53,29 @@ public class magic__suqare {
 		
 		
 		
-		
+		/*get the column elements as row vectors*/
 		Vector<Vector<Long>> col_values = new Vector<Vector<Long>>();
 		col_values = get_column(v);
 		
+		/*get the diagonal elements as row vectors*/
 		Vector<Vector<Long>> diag_values = new Vector<Vector<Long>>();
 		diag_values = get_diagonal(v);
 		
 		
+		/*variables to get the sum of the row , column and diagonal elements*/
 		Vector<Long>  sum_row = new Vector<Long>();
 		Vector<Long>  sum_col = new Vector<Long>();
 		Vector<Long>  sum_diag = new Vector<Long>();
 		
-		
+		/*sum of each row, column and diagonal elelements*/
 		sum_row = rowwise(v);
 		sum_col = rowwise(col_values);
 		sum_diag = rowwise(diag_values);
+		
+		/*prints out all the elements in the box*/
 		show(v);
 		
-		
+		/*checks if the sum of row, column and diagonal elements are equal*/
 		if(equal_sum(sum_row) && equal_sum(sum_col) && equal_sum(sum_diag)  ){
 			
 			System.out.printf("\nThis is a Magic Square \n");
@@ -84,6 +88,18 @@ public class magic__suqare {
 		
 		
 	}
+	
+	
+	/*
+	 * 
+	 * checks the equality of elements in a vector 
+	 * 
+	 * @param: vector of sum of the row, column or diagonal elements in the box
+	 * @return: boolean variable  
+	 * 
+	 * 
+	 * 
+	 * */
 	
 	private static boolean equal_sum(Vector<Long>v){
 		
@@ -140,7 +156,16 @@ public class magic__suqare {
 		
 	}
 	
-	
+	/*
+	 * 
+	 * performs row-wise addition of all the elements in a vector
+	 * 
+	 * @param: vector of vectors containing column or diagonal elements in the box
+	 * @return: Long integer sum of the elements in the vectors 
+	 * 
+	 * 
+	 * 
+	 * */
 	private static Vector<Long> rowwise(Vector<Vector<Long>>v){
 		
 		long g = 0;
@@ -160,7 +185,16 @@ public class magic__suqare {
 	}
 	
 	
-	
+	/*
+	 * 
+	 * Takes the vector of vectors and returns all the column elements  
+	 * 
+	 * @param: Input vector of vectors 
+	 * @return: vector containing Column elements   
+	 * 
+	 * 
+	 * 
+	 * */
 	private static Vector<Vector<Long>> get_column(Vector<Vector<Long>> v){
 		
 		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
@@ -184,8 +218,17 @@ public class magic__suqare {
 		
 	}
 	
-	
-	
+	/*
+	 * 
+	 * Takes the vector of vectors and returns all the column elements  
+	 * 
+	 * @param: Input vector of vectors 
+	 * @return: vector containing Column elements   
+	 * 
+	 * 
+	 * 
+	 * */
+
 	private static Vector<Vector<Long>> get_diagonal(Vector<Vector<Long>> v){
 		
 		Vector<Vector<Long>> temp = new Vector<Vector<Long>>();
@@ -242,6 +285,16 @@ public class magic__suqare {
 	}
 	
 	
+	/*
+	 * 
+	 * Prints out all the elements in a vector
+	 * 
+	 * @param: Input vector of elements
+	 * @return: void
+	 * 
+	 * 
+	 * 
+	 * */
 	private static void show_vector(Vector<Long> v){
 		
 		
