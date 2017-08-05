@@ -18,7 +18,7 @@ public class sudolu_check {
 		
 		try{
 			
-			x = new Scanner(new File("sample.txt"));
+			x = new Scanner(new File("values.txt"));
 			
 		}catch(Exception e){
 			
@@ -28,23 +28,42 @@ public class sudolu_check {
 		
 		int i = 0;
 		long size = 0;
+		boolean flag = true;
 		
-		while(x.hasNext()){
+		while(flag){
 			
 			if (i == 0){
 				
 				size = x.nextLong();
-				System.out.printf("Sudoku is of size is %d * %d\n\n",size,size);
+				System.out.printf("Sudoku is of size is %d * %d\n",size,size);
 				i++;
 				
 			}else{
 				
+				
+				i++;
+				if(i > size + 1){
+					break;
+				}
 				Vector<Long> temp = new Vector<Long>();
+				
 				for(int j  = 0; j < size; j++){
 					
-					temp.add(x.nextLong());
+					if(x.hasNextLong()){
+						
+						temp.add(x.nextLong());
+						
+					}else{
+						
+						System.out.printf("\nInvalid entry\n");
+						flag = false;
+						break;
+						
+					}
+					
 					
 				}
+				
 				
 				
 				v.add(temp);	
@@ -54,14 +73,31 @@ public class sudolu_check {
 	}
 		x.close();
 		
+		if(flag){
+				
+			
+			
+			show(v);
 		
+		/*gets all the column values of the sudoku puzzle*/
 		Vector<Vector<Long>>col_values = new Vector<Vector<Long>>();
 		col_values = get_column(v);
 		
-		if(equal_row(v) && equal_row(col_values)){
+		/*gets all the 3*3 inner matrix as a row vector*/
+		Vector<Vector<Long>>inner_matrix = new Vector<Vector<Long>>();
+		inner_matrix = get_inner_matrix(v);
+		
+		
+		/*condition for a valid sudoku is checked here, row elements,column elements, inner matrix elements are not duplicate*/
+		if(equal_row(v) && equal_row(col_values) && equal_row(inner_matrix)){
 			
 			System.out.println("\nThis is a valid sudoku\n");
 			
+		}else{
+			
+			System.out.println("\nThis is not a valid sudoku answer\n");
+			
+		}
 		}
 		
 		
@@ -133,6 +169,31 @@ public class sudolu_check {
 		
 	}
 	
+	/*
+	 * 
+	 * Prints out all the elements in a vector
+	 * 
+	 * @param: Input vector of elements
+	 * @return: void
+	 * 
+	 * 
+	 * 
+	 * */
+	private static void show_vector(Vector<Long> v){
+		
+		
+		for(int j = 0; j < v.size();j++){
+			
+			System.out.printf("%d ",v.get(j));
+
+
+
+
+	}
+		
+		
+	}
+	
 
 	/*
 	 * 
@@ -201,6 +262,62 @@ public class sudolu_check {
 			
 			
 		}
+	/*
+	 * returns the inner 3*3 matrix as row vector of vectors
+	 * 
+	 * @param: vector of vectors containing all the elements of sudoku
+	 * @return: the vector of vectors containing the inner matrix as row  vector
+	 * 
+	 * 
+	 * 
+	 * */	
+     private static Vector<Vector<Long>> get_inner_matrix(Vector<Vector<Long>>v){
+    	 
+    	 Vector<Vector<Long>>final_matrix= new Vector<Vector<Long>>();
+    	 
+    	 for(int i = 0; i < v.size(); i = i +3){
+    		 
+    		 Vector<Long> temp = new Vector<Long>();
+    		 
+    		 Vector<Long> temp_1 = new Vector<Long>();
+    		 Vector<Long> temp_2 = new Vector<Long>();
+    		 Vector<Long> temp_3 = new Vector<Long>();
+    		 
+    		 for(int k = 0; k < 3; k++){
+    		 
+    			 temp = v.get(i + k);
+    			 
+    			 for(int j = 0; j < v.size(); j++){
+    			 
+    				 if(j < v.size() - 6){
+    					 		temp_1.add(temp.get(j));
+    				 
+    				 	}else if(j >= v.size() - 6 && j < v.size() - 3){
+    				 			temp_2.add(temp.get(j));
+    			 
+    				 	}else if(j >= v.size() - 3){
+    				 			temp_3.add(temp.get(j));
+    				 
+    			 }
+    			 
+    			 
+    		 }
+    	
+    		 }
+    		 
+    		 final_matrix.add(temp_1);
+    		 final_matrix.add(temp_2);
+    		 final_matrix.add(temp_3);
+    		
+    		 
+    		 
+    	 }
+    	 
+    	 
+    	 
+    	 return final_matrix;
+  
+     }
 	
 
 }
