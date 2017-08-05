@@ -1,4 +1,13 @@
-
+/*
+ * magic square is a two-dimensional grid of integers in which the rows,
+   columns, and diagonals all add up to the same value. One of the most famous
+   magic squares appears in the 1514 engraving “Melencolia I” by Albrecht Dürer.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
 import java.io.File;
 import java.util.Scanner;
 import java.util.Vector;
