@@ -1,2 +1,12 @@
-We are provided with a data set of Canadian schools offering French immersion programs ("Second_Language_Immersion_Schools_in_Canada.csv"), which contains information regarding these schools such as their names, provinces and coordinates.
-Suppose we would like to determine the province in which a certain school or other place of interest is located in Canada, given that we have the coordinates (latitude and longitude) of this place.
+In this exercise, we will be using the balance_scale.txt data set.
+In this data set, each data point is classified as having the balance scale tip to the right, tip to the left, or be balanced.
+The variables of the data set are 'left weight', 'left distance', 'right weight', and 'right distance'.
+The class is determined by the greater of (right-distance x right-weight) and (left-distance x left-weight).
+However, if these values are equal, the data point is balanced.
+
+
+
+We are provided with a data set of Canadian schools offering French immersion programs ("Second_Language_Immersion_Schools_in_Canada.csv"),
+ which contains information regarding these schools such as their names, provinces and coordinates.
+Suppose we would like to determine the province in which a certain school or other place of interest is located in Canada, 
+given that we have the coordinates (latitude and longitude) of this place.
