@@ -1,0 +1,2 @@
+We are provided with a data set of Canadian schools offering French immersion programs ("Second_Language_Immersion_Schools_in_Canada.csv"), which contains information regarding these schools such as their names, provinces and coordinates.
+Suppose we would like to determine the province in which a certain school or other place of interest is located in Canada, given that we have the coordinates (latitude and longitude) of this place.
