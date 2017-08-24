@@ -42,9 +42,13 @@ public class Mine_Sweeper {
 				
 				side = 24;
 				mine = 99;
+			}else{
+				
+				System.out.printf("Invalid Input");
+				
 			}
 			
-		System.out.printf("Enter the size of columns\n");
+		
 			
 		
 		System.out.printf("%d,%d\n",side,mine);
@@ -79,6 +83,8 @@ public class Mine_Sweeper {
 			int temp = Math.floorDiv(v.get(i)*mine, sum);
 			partition.add(temp);
 		}
+		
+		
 		
 		int residual = mine - adding(partition);
 		
